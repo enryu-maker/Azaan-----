@@ -104,7 +104,7 @@ export default function SettingScreen({navigation}) {
       <View
         style={{
           backgroundColor: COLORS.background,
-          padding: 15,
+          // padding: 15,
           width: SIZES.width - 50,
           alignSelf: 'center',
           borderRadius: SIZES.padding,

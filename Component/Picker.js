@@ -31,7 +31,6 @@ export default function PickerType({
       })
         .then(image => {
           setLoading(false);
-
           const uriParts = image.path.split('.');
           const fileType = uriParts[uriParts.length - 1];
           setPic(image.path);
@@ -91,6 +90,16 @@ export default function PickerType({
           width: SIZES.width,
         }}
         onStartShouldSetResponder={() => setshow(false)}>
+          <ActivityIndicator style={{
+            justifyContent:"center",
+            alignSelf:"center",
+            marginBottom:SIZES.height*0.3
+
+          }}
+          animating={Loading}
+          size={"large"}
+          color={COLORS.white}
+          />
         <View
           style={{
             height: 120,
@@ -103,13 +112,6 @@ export default function PickerType({
             justifyContent: 'space-evenly',
             alignItems: 'center',
           }}>
-          {Loading ? (
-            <ActivityIndicator
-              size={'small'}
-              color={COLORS.white}
-              animating={Loading}
-            />
-          ) : (
             <>
               <TouchableOpacity
                 onPress={() => {
@@ -156,7 +158,6 @@ export default function PickerType({
                 </Text>
               </TouchableOpacity>
             </>
-          )}
         </View>
       </View>
     </Modal>

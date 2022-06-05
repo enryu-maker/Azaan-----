@@ -80,9 +80,12 @@ export default function HomeScreen() {
       }}>
       <Header title={'Masjid مسجد'} />
       <FlatList
+      contentContainerStyle={{
+        marginTop:SIZES.height*0.05
+      }}
       scrollEventThrottle={16}
       // onScroll={Animated.event(
-      //   // [{ nativeEvent: { contentOffset: { x: xOffset } } }],
+      //   [{ nativeEvent: { contentOffset: { x: xOffset } } }],
       //   { useNativeDriver: true }
       // )}
       pagingEnabled={true}
