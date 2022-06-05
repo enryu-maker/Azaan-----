@@ -1,12 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
- import { enableScreens } from 'react-native-screens';
-import { View, Text } from 'react-native'
+import { enableScreens } from 'react-native-screens';
+import { View, Text,StatusBar } from 'react-native'
 import React from 'react'
 import {COLORS} from './Constants/Theme'
 import MainCard from './Component/mainCard'
@@ -42,6 +35,10 @@ export default function App() {
       flex:1,
       backgroundColor:COLORS.white
     }}>
+      <StatusBar
+            barStyle={Platform.OS == 'android' ? 'default' : 'dark-content'}
+            backgroundColor={'black'}
+          />
       <NavigationContainer>
       <Stack.Navigator screenOptions={({navigation})=>{
           return{

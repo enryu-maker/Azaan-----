@@ -1,4 +1,4 @@
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image,Platform} from 'react-native';
 import React from 'react';
 import {
   BottomTabBar,
@@ -33,12 +33,13 @@ function MyTabs() {
           return (
             <View
               style={{
-                height: 48,
-                width: 48,
+                height: 50,
+                width: 50,
                 backgroundColor: focused ? COLORS.background : COLORS.primary,
                 justifyContent: 'center',
-                alignSelf: 'center',
+                alignSelf: "center",
                 borderRadius: 12,
+                marginTop:Platform.OS=="ios"?30:0
               }}>
               <Image
                 source={iconName}
@@ -53,11 +54,7 @@ function MyTabs() {
             </View>
           );
         },
-        tabBarShowLabel: true,
-        tabBarLabelStyle: {
-          ...FONTS.h5,
-          marginBottom: 1.6,
-        },
+        tabBarShowLabel: false,
         tabBarStyle: {
           height: 80,
           width: SIZES.width - 30,
@@ -65,6 +62,7 @@ function MyTabs() {
           backgroundColor: COLORS.primary,
           alignSelf: 'center',
           margin: SIZES.height < 700 ? 20 : 10,
+          marginBottom:SIZES.height < 700 ? 10 : 30,
         },
         tabBarActiveTintColor: COLORS.background,
         tabBarInactiveTintColor: COLORS.black,

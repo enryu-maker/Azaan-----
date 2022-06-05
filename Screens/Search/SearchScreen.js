@@ -29,7 +29,8 @@ export default function Search({
     );
   };
   React.useEffect(()=>{
-    getLocation()
+    !Loading?
+    getLocation():null
   },[])
   const [search,setSearch] = React.useState('')
   const dispatch=useDispatch()

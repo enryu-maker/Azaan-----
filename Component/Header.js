@@ -9,7 +9,7 @@ export const Header = ({ containerStyle, title, titleStyle, leftComponent, right
                 height: 50,
                 flexDirection: 'row',
                 alignSelf:'center',
-                marginTop:Platform.OS=="android" ? 8 :12,
+                marginTop:Platform.OS=="android" ? 8 :35,
                 justifyContent:"space-evenly",
                 ...containerStyle,
             }}

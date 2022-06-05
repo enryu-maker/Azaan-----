@@ -83,7 +83,7 @@ export default function AddMasjid({navigation}) {
             setshowc(true);
           }}>
           <Image
-            source={pic==''?IMAGES.gallery:{uri:pic}}
+            source={pic==''?IMAGES.gallery : { uri : pic } }
             resizeMode={'cover'}
             style={pic==''?{
               height: 80,
