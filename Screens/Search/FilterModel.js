@@ -11,9 +11,11 @@ import {
 } from 'react-native';
 
 import TextButton from '../../Component/TextButton';
+import { IMAGES } from '../../Constants/Images';
 import { COLORS, SIZES, FONTS  } from '../../Constants/Theme';
-import VerticalDivider from '../../Component/VerticalDivider';
-
+import { Type } from '../../Constants/dummyData';
+// import VerticalDivider from '../../Component/VerticalDivider';
+import TwoPointSlider from '../../Component/TwoPointSlider';
 const Section = ({ containerStyle, title, children }) => {
     return (
         <View
@@ -60,307 +62,79 @@ const FilterModal = ({ isVisible, onClose }) => {
         inputRange: [0, 1],
         outputRange: [SIZES.height, SIZES.height > 700 ? SIZES.height - 680 : SIZES.height - 580]
     })
-    function renderGender(){
-        return(
-            <View
-                style={{
-                    flexDirection: 'row',
-                    height: 50,
-                    marginTop: SIZES.radius,
-                    paddingHorizontal: SIZES.padding,
-                    marginBottom:20,
-                    borderBottomEndRadius:SIZES.radius,
-                    borderBottomStartRadius:SIZES.radius
-                }}
-            >
-                <TextButton
-                    buttonContainerStyle={{
-                        flex: 1,
-                        borderRadius: SIZES.radius,
-                        // backgroundColor: (selectedTab == 'history') ? COLORS.Primary : COLORS.transparentPrimary2
-                        backgroundColor:COLORS.transparentPrimary
-                    }}
-                    label="Male"
-                    labelStyle={{
-                        // color: (selectedTab == 'history') ? COLORS.white : COLORS.primary
-                    }}
-                    onPress={() => {
-                        // setSelectedTab("history")
-                        // setOrders(dummyData.orderHistories)
-                    }}
-                />
-    
-                <TextButton
-                    buttonContainerStyle={{
-                        flex: 1,
-                        marginLeft: SIZES.padding,
-                        borderRadius: SIZES.radius,
-                        backgroundColor:COLORS.transparentPrimary
-                        // backgroundColor: (selectedTab == 'upcoming') ? COLORS.primary : COLORS.transparentPrimary9
-                    }}
-                    label="Female"
-                    labelStyle={{
-                        // color: (selectedTab == 'upcoming') ? COLORS.white : COLORS.Primary
-                    }}
-                    onPress={() => {
-                        // setSelectedTab("upcoming")
-                        // setOrders(dummyData.upcomingOrders)
-                    }}
-                />
-            </View>
-        )
-    }
-    function renderSpecies(){
-        return(
-            <View style={{
-                flexDirection:"column",
-            }}>
-                <View
-                style={{
-                    flexDirection:"row",
-                    height: 50,
-                    marginTop: SIZES.radius,
-                    paddingHorizontal: SIZES.padding,
-                    marginBottom:20,
-                    borderBottomEndRadius:SIZES.radius,
-                    borderBottomStartRadius:SIZES.radius
-                }}
-            >
-                <TextButton
-                    buttonContainerStyle={{
-                        flex: 1,
-                        borderRadius: SIZES.radius,
-                        // backgroundColor: (selectedTab == 'history') ? COLORS.Primary : COLORS.transparentPrimary2
-                        backgroundColor:COLORS.transparentPrimary
-                    }}
-                    label="Cow"
-                    labelStyle={{
-                        // color: (selectedTab == 'history') ? COLORS.white : COLORS.primary
-                    }}
-                    onPress={() => {
-                        // setSelectedTab("history")
-                        // setOrders(dummyData.orderHistories)
-                    }}
-                />
-    
-                <TextButton
-                    buttonContainerStyle={{
-                        flex: 1,
-                        marginLeft: SIZES.padding,
-                        borderRadius: SIZES.radius,
-                        backgroundColor:COLORS.transparentPrimary
-                        // backgroundColor: (selectedTab == 'upcoming') ? COLORS.primary : COLORS.transparentPrimary9
-                    }}
-                    label="Goat"
-                    labelStyle={{
-                        // color: (selectedTab == 'upcoming') ? COLORS.white : COLORS.Primary
-                    }}
-                    onPress={() => {
-                        // setSelectedTab("upcoming")
-                        // setOrders(dummyData.upcomingOrders)
-                    }}
-                /></View>
-                <View
-                style={{
-                    flexDirection:"row",
-                    height: 50,
-                    marginTop: SIZES.radius,
-                    paddingHorizontal: SIZES.padding,
-                    marginBottom:20,
-                    borderBottomEndRadius:SIZES.radius,
-                    borderBottomStartRadius:SIZES.radius
-                }}
-            >
-                <TextButton
-                    buttonContainerStyle={{
-                        flex: 1,
-                        // marginLeft: SIZES.padding,
-                        borderRadius: SIZES.radius,
-                        backgroundColor:COLORS.transparentPrimary
-                        // backgroundColor: (selectedTab == 'upcoming') ? COLORS.primary : COLORS.transparentPrimary9
-                    }}
-                    label="Pig"
-                    labelStyle={{
-                        // color: (selectedTab == 'upcoming') ? COLORS.white : COLORS.Primary
-                    }}
-                    onPress={() => {
-                        // setSelectedTab("upcoming")
-                        // setOrders(dummyData.upcomingOrders)
-                    }}
-                />
-                <TextButton
-                    buttonContainerStyle={{
-                        flex: 1,
-                        marginLeft: SIZES.padding,
-                        borderRadius: SIZES.radius,
-                        backgroundColor:COLORS.transparentPrimary
-                        // backgroundColor: (selectedTab == 'upcoming') ? COLORS.primary : COLORS.transparentPrimary9
-                    }}
-                    label="Dog"
-                    labelStyle={{
-                        // color: (selectedTab == 'upcoming') ? COLORS.white : COLORS.Primary
-                    }}
-                    onPress={() => {
-                        // setSelectedTab("upcoming")
-                        // setOrders(dummyData.upcomingOrders)
-                    }}
-                />
-            </View>
-            <View
-                style={{
-                    flexDirection:"row",
-                    height: 50,
-                    marginTop: SIZES.radius,
-                    paddingHorizontal: SIZES.padding,
-                    marginBottom:20,
-                    borderBottomEndRadius:SIZES.radius,
-                    borderBottomStartRadius:SIZES.radius
-                }}
-            >
-                <TextButton
-                    buttonContainerStyle={{
-                        flex: 1,
-                        // marginLeft: SIZES.padding,
-                        borderRadius: SIZES.radius,
-                        backgroundColor:COLORS.transparentPrimary
-                        // backgroundColor: (selectedTab == 'upcoming') ? COLORS.primary : COLORS.transparentPrimary9
-                    }}
-                    label="Sheep"
-                    labelStyle={{
-                        // color: (selectedTab == 'upcoming') ? COLORS.white : COLORS.Primary
-                    }}
-                    onPress={() => {
-                        // setSelectedTab("upcoming")
-                        // setOrders(dummyData.upcomingOrders)
-                    }}
-                />
-                <TextButton
-                    buttonContainerStyle={{
-                        flex: 1,
-                        marginLeft: SIZES.padding,
-                        borderRadius: SIZES.radius,
-                        backgroundColor:COLORS.transparentPrimary
-                        // backgroundColor: (selectedTab == 'upcoming') ? COLORS.primary : COLORS.transparentPrimary9
-                    }}
-                    label="Chicken"
-                    labelStyle={{
-                        // color: (selectedTab == 'upcoming') ? COLORS.white : COLORS.Primary
-                    }}
-                    onPress={() => {
-                        // setSelectedTab("upcoming")
-                        // setOrders(dummyData.upcomingOrders)
-                    }}
-                />
-            </View>
-            <View
-                style={{
-                    flexDirection:"row",
-                    height: 50,
-                    marginTop: SIZES.radius,
-                    paddingHorizontal: SIZES.padding,
-                    marginBottom:20,
-                    borderBottomEndRadius:SIZES.radius,
-                    borderBottomStartRadius:SIZES.radius
-                }}
-            >
-                <TextButton
-                    buttonContainerStyle={{
-                        flex: 1,
-                        // marginLeft: SIZES.padding,
-                        borderRadius: SIZES.radius,
-                        backgroundColor:COLORS.transparentPrimary
-                        // backgroundColor: (selectedTab == 'upcoming') ? COLORS.primary : COLORS.transparentPrimary9
-                    }}
-                    label="Rabbit"
-                    labelStyle={{
-                        // color: (selectedTab == 'upcoming') ? COLORS.white : COLORS.Primary
-                    }}
-                    onPress={() => {
-                        // setSelectedTab("upcoming")
-                        // setOrders(dummyData.upcomingOrders)
-                    }}
-                />
-                <TextButton
-                    buttonContainerStyle={{
-                        flex: 1,
-                        marginLeft: SIZES.padding,
-                        borderRadius: SIZES.radius,
-                        backgroundColor:COLORS.transparentPrimary
-                        // backgroundColor: (selectedTab == 'upcoming') ? COLORS.primary : COLORS.transparentPrimary9
-                    }}
-                    label="Horse"
-                    labelStyle={{
-                        // color: (selectedTab == 'upcoming') ? COLORS.white : COLORS.Primary
-                    }}
-                    onPress={() => {
-                        // setSelectedTab("upcoming")
-                        // setOrders(dummyData.upcomingOrders)
-                    }}
-                />
-            </View>
-            </View>
-        )
-    }
-    function renderTabButtons() {
+    function renderDistance() {
         return (
-            <View
-                style={{
-                    flexDirection: 'row',
-                    height: 50,
-                    marginTop: SIZES.radius,
-                    paddingHorizontal: SIZES.padding,
-                    marginBottom:20,
-                    borderBottomEndRadius:SIZES.radius,
-                    borderBottomStartRadius:SIZES.radius
-                }}
+            <Section
+                title="Masjid Distance"
             >
-                <TextButton
-                    buttonContainerStyle={{
-                        flex: 1,
-                        borderRadius: SIZES.radius,
-                        // backgroundColor: (selectedTab == 'history') ? COLORS.Primary : COLORS.transparentPrimary2
-                        backgroundColor:COLORS.transparentPrimary
+                <View
+                    style={{
+                        alignItems: 'center'
                     }}
-                    label="Breed"
-                    labelStyle={{
-                        // color: (selectedTab == 'history') ? COLORS.white : COLORS.primary
+                >
+                    <TwoPointSlider
+                        values={[0, 5]}
+                        min={1}
+                        max={20}
+                        postfix="km"
+                        onValuesChange={(values) => console.log(values[1])}
+                    />
+                </View>
+            </Section>
+        )
+    }
+    function renderTags() {
+        return (
+            <Section
+                title="Masjid Type "
+            >
+                <View
+                    style={{
+                        flexDirection: 'row',
+                        flexWrap: 'wrap'
                     }}
-                    onPress={() => {
-                        // setSelectedTab("history")
-                        // setOrders(dummyData.orderHistories)
-                    }}
-                />
-    
-                <TextButton
-                    buttonContainerStyle={{
-                        flex: 1,
-                        marginLeft: SIZES.padding,
-                        borderRadius: SIZES.radius,
-                        backgroundColor:COLORS.transparentPrimary
-                        // backgroundColor: (selectedTab == 'upcoming') ? COLORS.primary : COLORS.transparentPrimary9
-                    }}
-                    label="Purchased"
-                    labelStyle={{
-                        // color: (selectedTab == 'upcoming') ? COLORS.white : COLORS.Primary
-                    }}
-                    onPress={() => {
-                        // setSelectedTab("upcoming")
-                        // setOrders(dummyData.upcomingOrders)
-                    }}
-                />
-            </View>
+                >
+                    {Type.map((item, index) => {
+                        return (
+                            <TextButton
+                                key={`Tags-${index}`}
+                                icon={IMAGES.mosque}
+                                iconStyle={{
+                                    tintColor:item.id == tags ? COLORS.background : COLORS.white
+                                }}
+                                label={item.name}
+                                labelStyle={{
+                                    color: item.id == tags ? COLORS.background : COLORS.white,
+                                    ...FONTS.body3
+                                }}
+                                buttonContainerStyle={{
+                                    height: 50,
+                                    margin: 5,
+                                    paddingHorizontal: SIZES.padding,
+                                    alignItems: 'center',
+                                    borderRadius: SIZES.base,
+                                    backgroundColor: item.id == tags ? COLORS.primary : COLORS.background
+                                }}
+                                onPress={() => {
+                                    setTags(item.id)
+                                    console.log(item.label)}}
+                            />
+                        )
+                    })}
+                </View>
+            </Section>
         )
     }
     return (
         <Modal
-            animationType="fade"
+            animationType="slide"
             transparent={true}
             visible={isVisible}
         >
             <View
                 style={{
                     flex: 1,
-                    backgroundColor: COLORS.Primary
+                    backgroundColor: COLORS.background
                 }}
             >
                 {/* Transparent Background */}
@@ -400,20 +174,8 @@ const FilterModal = ({ isVisible, onClose }) => {
         
         >
                         <KeyboardAvoidingView behavior="position">
-                    {/* <Text style={ [FONTS.body3,{letterSpacing:2,padding:8}]}>Type of Animal</Text>
-                    {renderTabButtons()}
-                    <LineDivider
-                    lineStyle={{width:"98%",alignSelf:"center"}}/> */}
-                    {/* <Text style={ [FONTS.body3,{letterSpacing:2,padding:8}]}>Gender</Text>
-                    {renderGender()}
-                    <LineDivider
-                    lineStyle={{width:"98%",alignSelf:"center"}}/>
-                    
-                    <Text style={ [FONTS.body3,{letterSpacing:2,padding:8}]}>Species</Text>
-                    
-                        {renderSpecies()}
-                    <LineDivider
-                    lineStyle={{width:"98%",alignSelf:"center"}}/> */}
+                    {renderDistance()}
+                    {renderTags()}
                         </KeyboardAvoidingView>
                     
                     </ScrollView>
@@ -423,7 +185,7 @@ const FilterModal = ({ isVisible, onClose }) => {
                     <View
                         style={{
                             position: 'absolute',
-                            bottom: Platform.OS === 'ios' ? (SIZES.height > 700 ? 150 : 75) : 80,
+                            bottom: Platform.OS === 'ios' ? (SIZES.height > 700 ? 190 : 80) : 80,
                             left: 0,
                             right: 0,
                             height: 110,
@@ -434,10 +196,11 @@ const FilterModal = ({ isVisible, onClose }) => {
                     >
                         <TextButton
                             label="Apply Filters"
+                            icon={IMAGES.filter}
                             buttonContainerStyle={{
                                 height: 50,
                                 borderRadius: SIZES.base,
-                                backgroundColor: COLORS.Primary
+                                backgroundColor: COLORS.primary
                             }}
                             onPress={() => setShowFilterModal(false)}
                         />

@@ -120,14 +120,17 @@ export const Masjid = [
 ];
 export const Type = [
   {
+    id:1,
     name: 'Sunni سنی',
     label: 'Sunni',
   },
   {
+    id:2,
     name: 'Deobandi دیوبند',
     label: 'Deobandi',
   },
   {
+    id:3,
     name: 'Ahl-iHadith اہلِ حدیث',
     label: 'Ahl-iHadith',
   },

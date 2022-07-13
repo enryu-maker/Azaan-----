@@ -9,10 +9,13 @@ import {IMAGES} from '../../Constants/Images';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateFavourite } from '../../Store/action';
 import Geolocation from '@react-native-community/geolocation';
+import FilterModal from './FilterModel';
 export default function Search({
   navigation
 }) {
   const[Loading,setLoading] = React.useState(false)
+  const[showFilterModel,setshowFilterModel] = React.useState(false)
+
   const getLocation = () => {
     setLoading(true)
     Geolocation.getCurrentPosition(
@@ -50,6 +53,12 @@ export default function Search({
         flex: 1,        
       }}>
       <Header title={'Search تفص'} />
+      {
+        showFilterModel &&
+        <FilterModal isVisible={showFilterModel} onClose={()=>{
+          setshowFilterModel(false)
+        }}/>
+      }
       <FormInput
         prependComponent={<View style={{
           justifyContent:"center",
@@ -70,6 +79,9 @@ export default function Search({
         </View>}
         placeholder={'search... تفص'}
         img={IMAGES.filter}
+        onPress={()=>{
+          setshowFilterModel(true)
+        }}
         value={search}
         onChange={(text)=>{
           setSearch(text)
