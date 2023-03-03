@@ -15,11 +15,11 @@ export default function VerticalCard({
 }) {
   return (
     <TouchableOpacity style={{
-        backgroundColor:COLORS.primary,
+        backgroundColor:COLORS.background,
         height:112,
         width:SIZES.width-50,
         alignSelf:"center",
-        borderRadius:SIZES.padding,
+        borderRadius:SIZES.radius,
         marginTop:15,
         
     }}
@@ -29,14 +29,14 @@ export default function VerticalCard({
         ...FONTS.h3,
         alignSelf:"flex-start",
         marginLeft:12,
-        color:COLORS.background
+        color:COLORS.text
       }}
       containerStyle={{
         marginTop:-5,
       }}
       rightComponent={ <TouchableOpacity style={{
         alignSelf:"center",
-        backgroundColor:COLORS.background,
+        backgroundColor:COLORS.primary,
         height:30,
         width:30,
         borderRadius:12,
@@ -49,7 +49,7 @@ export default function VerticalCard({
         width:20,
         height:20,
         alignSelf:"center",
-        tintColor:COLORS.red
+        tintColor:COLORS.background
     }}/>
     </TouchableOpacity>}
       />
@@ -57,7 +57,7 @@ export default function VerticalCard({
         ...FONTS.h3,
         alignSelf:"flex-start",
         marginLeft:35,
-        color:COLORS.background
+        color:COLORS.text
       }}
       containerStyle={{
         marginTop:-25,
@@ -68,7 +68,7 @@ export default function VerticalCard({
         alignContent:"center"
       }}>
         <View style={{
-          backgroundColor:COLORS.background,
+          backgroundColor:COLORS.primary,
           height:30,
           paddingHorizontal:10,
           borderRadius:12,
@@ -78,13 +78,13 @@ export default function VerticalCard({
           <Text style={{
             alignSelf:"center",
             ...FONTS.h3,
-            color:COLORS.text
+            color:COLORS.background
           }}>
           {type}
           </Text>
         </View>
         <View style={{
-          backgroundColor:COLORS.background,
+          backgroundColor:COLORS.primary,
           height:30,
           paddingHorizontal:10,
           borderRadius:12,
@@ -94,9 +94,9 @@ export default function VerticalCard({
           <Text style={{
             alignSelf:"center",
             ...FONTS.h3,
-            color:COLORS.text
+            color:COLORS.background
           }}>
-          {distance}KM
+          {distance} KM
           </Text>
         </View>
       </View>

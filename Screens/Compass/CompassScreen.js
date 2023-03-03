@@ -1,75 +1,102 @@
-import {View, Text,ImageBackground,Image,StyleSheet} from 'react-native';
-import React from 'react';
-import {COLORS} from '../../Constants/Theme';
-import {Header} from '../../Component/Header';
-import CompassHeading from 'react-native-compass-heading';
-import Geolocation from '@react-native-community/geolocation';
-export default function CompassScreen() {
-  const[compassHeading,setCompassHeading] = React.useState(0);
-  const[Loading,setLoading]  = React.useState(false)
-  const[qiblaD,setQiblaD] = React.useState(0);
-  const calculate = (latitude, longitude) => {
-    const PI = Math.PI;
-    let latk = (21.4225 * PI) / 180.0;
-    let longk = (39.8264 * PI) / 180.0;
-    let phi = (latitude * PI) / 180.0;
-    let lambda = (longitude * PI) / 180.0;
-    let qiblad =
-      (180.0 / PI) *
-      Math.atan2(
-        Math.sin(longk - lambda),
-        Math.cos(phi) * Math.tan(latk) -
-          Math.sin(phi) * Math.cos(longk - lambda),
-      );
-      console.log(qiblad)
-    setQiblaD(qiblad);
-    setLoading(false)
-  };
-  const getLocation = () => {
-    setLoading(true)
-    Geolocation.getCurrentPosition(
-      (position) => {
-        const {latitude, longitude} = position.coords;
-        calculate(latitude, longitude);
-      },
-      error => {
-        console.log(error.code, error.message);
-      },
-      {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
-    );
-  };
+import { View, Text, Image, FlatList } from 'react-native'
+import React from 'react'
+import { Header } from '../../Component/Header'
+import SurahCard from './SurahCard'
+import FormInput from '../../Component/InputForm'
+import FilterModal from '../Search/FilterModel'
+import { COLORS } from '../../Constants/Theme'
+import { IMAGES } from '../../Constants/Images'
+import axios from 'axios'
+export default function CompassScreen({
+  navigation
+}) {
+  const[showFilterModel,setshowFilterModel] = React.useState(false)
+  const [search,setSearch] = React.useState('')
+  const [surah,setSurah] = React.useState([])
+
   React.useEffect(()=>{
-    getLocation();
-    const degree_update_rate = 3;
-    CompassHeading.start(degree_update_rate, ({heading, accuracy}) => {
-      setCompassHeading(heading);
-    });
-    return () => {
-      CompassHeading.stop();
-    };
+    axios.get('https://api.alquran.cloud/v1/surah')
+    .then((res)=>{
+      console.log(res.data.data)
+      setSurah(res.data.data)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
   },[])
-  // console.log(Loading)
+
+  // search list according to search
+  const filteredList = (search) => {
+    return surah.filter((item) => {
+      return item.englishName.toLowerCase().includes(search.toLowerCase())
+    })
+  }
+
+
   return (
     <View
-      style={{
-        flex: 1,
-        // backgroundColor: COLORS.background,
-      }}>
-      <Header title={'Qibla قبلہ'} />
-
-      <Image
-          source={require('../../assets/qiblaloc.png')}
-          style={[
-            styles.image,
-            {transform: [{rotate: `${qiblaD}deg`}]},
-          ]}/>
-
-
-
+    style={{
+      flex: 1,
+    }}>
+    <Header title={'Surah سورہ'} />
+    {
+        showFilterModel &&
+        <FilterModal isVisible={showFilterModel} onClose={()=>{
+          setshowFilterModel(false)
+        }}/>
+      }
+      <FormInput
+        prependComponent={<View style={{
+          justifyContent:"center",
+          height:35,
+          width:35,
+          backgroundColor:COLORS.primary,
+          borderRadius:12,
+          alignSelf:"center",
+          
+        }}>
+          <Image source={IMAGES.search} style={{
+            height:22,
+            width:22,
+            alignSelf:"center",
+            justifyContent:"center",
+            tintColor:COLORS.background
+          }}/> 
+        </View>}
+        placeholder={'search... تفص'}
+        // img={IMAGES.filter}
+        // onPress={()=>{
+        //   setshowFilterModel(true)
+        // }}
+        value={search}
+        onChange={(text)=>{
+          setSearch(text)
+        }}
+        containerStyle={{
+          marginBottom:10
+        }}
+      />
+    <FlatList
+      data={filteredList(search)}
+      keyExtractor={(item,index)=>index.toString()}
+      renderItem={({item})=>{
+        return(
+          <SurahCard
+          name={item.name}
+          urdu_name={item.englishName}
+          type={item.englishName}
+          distance={item.numberOfAyahs}
+          onPress={()=>{
+            navigation.navigate('Surah',{
+              data:item
+            })
+          }}
+          number={item.number}
+          />
+        )
+      }
+      }
+    />
     </View>
-  );
+  )
 }
-const styles = StyleSheet.create({
-  image: {width: '90%', resizeMode: 'contain', alignSelf: 'center',tintColor:COLORS.primary},
-  container: {backgroundColor: '#fff', flex: 1},
-});

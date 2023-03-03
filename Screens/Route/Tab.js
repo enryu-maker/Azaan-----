@@ -24,9 +24,11 @@ function MyTabs() {
             iconName = focused ? IMAGES.mosque : IMAGES.mosque;
           } else if (route.name === 'Search') {
             iconName = focused ? IMAGES.search : IMAGES.search;
-          } else if (route.name === 'Quran') {
+          } 
+          else if (route.name === 'Quran') {
             iconName = focused ? IMAGES.quran : IMAGES.quran;
-          } else if (route.name === 'Setting') {
+          } 
+          else if (route.name === 'Setting') {
             iconName = focused ? IMAGES.setting : IMAGES.setting;
           }
 

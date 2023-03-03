@@ -12,13 +12,11 @@ export const Init = () => {
 };
 export const updateFavourite = (current_List, newItem) => {
   return async dispatch => {
-    let list = [];
     current_List.push(newItem);
     await AsyncStorage.setItem('favourite', JSON.stringify(current_List));
-    list = current_List;
     dispatch({
       type: 'UPDATE_FAVOURITE',
-      payload: list,
+      payload: current_List,
     });
   };
 };

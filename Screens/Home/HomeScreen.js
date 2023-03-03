@@ -9,6 +9,7 @@ export default function HomeScreen() {
 
   const dispatch = useDispatch()
   const favMasjid = useSelector(state => state.Reducers.favourite);
+  console.log(favMasjid)
   React.useEffect(()=>{
     // setInterval(()=>{
       dispatch(Init())
@@ -19,7 +20,6 @@ export default function HomeScreen() {
   let Parsed_list=[]
   try{
     Parsed_list=JSON.parse(favMasjid)
-    
   }
   catch{
     Parsed_list=favMasjid

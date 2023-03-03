@@ -16,6 +16,7 @@ import Profile from './Screens/Setting/Profile/Profile'
 import {request, PERMISSIONS, requestMultiple} from 'react-native-permissions';
 import InfoScreen from './Screens/Search/InfoScreen'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SurahScreen from './Screens/Compass/SurahScreen';
 const Stack = createNativeStackNavigator()
 export default function App() {
   const [PermissionResult, setPermissionResult] = React.useState(null);
@@ -58,6 +59,8 @@ export default function App() {
             <Stack.Screen name='AddMasjid' component={AddMasjid} />
             <Stack.Screen name='Profile' component={Profile} />
             <Stack.Screen name='Info' component={InfoScreen} />
+            <Stack.Screen name='Surah' component={SurahScreen} />
+
           </Stack.Navigator>
       </NavigationContainer>
     </View>
